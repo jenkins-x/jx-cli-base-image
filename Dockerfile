@@ -54,11 +54,8 @@ FROM google/cloud-sdk:slim
 
 
 # need to copy the whole git source else it doesn't clone the helm plugin repos below
-COPY --from=0 /usr/local/git /usr/local/git
-COPY --from=0 /usr/bin/make /usr/bin/make
 COPY --from=0 /out /usr/local/bin
 COPY --from=1 /out /usr/local/bin
-COPY --from=0 /usr/local/gcloud /usr/local/gcloud
 
 # this is the directory used in pipelines for home dir
 ENV HOME /builder/home
@@ -77,7 +74,9 @@ ENV JX_HELM3 "true"
 
 ENV DIFF_VERSION 3.1.1
 
+# TODO - we could download this in a previous stage and copy the binary in case this command leaves files around
 RUN gcloud components install kpt --quiet
+
 RUN gsutil cp gs://config-management-release/released/latest/linux_amd64/nomos /usr/local/bin/nomos
 RUN mkdir -p /home/.jx/plugins/bin/
 
