@@ -1,0 +1,31 @@
+buildPack: none
+pipelineConfig:
+  pipelines:
+    pullRequest:
+      pipeline:
+        stages:
+          - agent:
+              image: gcr.io/kaniko-project/executor:debug-9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+            name: chart
+            steps:
+              - name: make-build
+                command: make build
+                image: golang:1.13
+              - name: build-and-push-image
+                command: /kaniko/executor --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/jenkinsxio-labs-private/jx-cli-base:$VERSION
+    release:
+      pipeline:
+        stages:
+          - agent:
+              image: gcr.io/kaniko-project/executor:debug-9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+            name: chart
+            steps:
+              - name: make-build
+                command: make build
+                image: golang:1.13
+              - name: build-and-push-image
+                command: /kaniko/executor --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/jenkinsxio-labs-private/jx-cli-base:$VERSION
+              - name: promote-release
+                command: ./promote.sh
+                dir: /workspace/source
+                image: gcr.io/jenkinsxio-labs-private/jxl
