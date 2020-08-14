@@ -1,4 +1,5 @@
-FROM google/cloud-sdk:slim
+# this is the build image so don't worry about using stuff...
+FROM centos:7
 
 RUN mkdir /out
 
