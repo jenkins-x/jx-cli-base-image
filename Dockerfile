@@ -74,8 +74,9 @@ ENV JX_HELM3 "true"
 
 ENV DIFF_VERSION 3.1.1
 
-# TODO - we could download this in a previous stage and copy the binary in case this command leaves files around
-RUN gcloud components install kpt --quiet
+RUN curl -f -Lo kpt https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kpt && \
+  chmod +x kpt && \
+  mv kpt /usr/local/bin
 
 RUN gsutil cp gs://config-management-release/released/latest/linux_amd64/nomos /usr/local/bin/nomos
 RUN mkdir -p /home/.jx/plugins/bin/
