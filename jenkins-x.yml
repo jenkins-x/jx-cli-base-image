@@ -28,4 +28,4 @@ pipelineConfig:
               - name: promote-release
                 command: ./promote.sh
                 dir: /workspace/source
-                image: gcr.io/jenkinsxio/jxl
+                image: gcr.io/jenkinsxio/jx-cli:3.0.8
