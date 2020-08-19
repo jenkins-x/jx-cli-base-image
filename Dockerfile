@@ -81,7 +81,7 @@ RUN curl -f -Lo kpt https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kp
 RUN gsutil cp gs://config-management-release/released/latest/linux_amd64/nomos /usr/local/bin/nomos
 RUN mkdir -p /home/.jx/plugins/bin/
 
-COPY helm-annotate/build/helm-annotate /home/.jx/plugins/bin/helmfile-0.0.11
+#COPY helm-annotate/build/helm-annotate /home/.jx/plugins/bin/helmfile-0.0.11
 
 RUN cp /usr/local/bin/helm /home/.jx/plugins/bin/helm-3.2.1 && \
     cp /usr/local/bin/helmfile /home/.jx/plugins/bin/helmfile-0.115.0 && \
