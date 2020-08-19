@@ -15,7 +15,7 @@ pipelineConfig:
                 command: /kaniko/executor --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/jenkinsxio/jx-cli-base:$VERSION
                 env:
                 - name: NO_GOOGLE_APPLICATION_CREDENTIALS
-                  alue: "true"
+                  value: "true"
                
     release:
       pipeline:
