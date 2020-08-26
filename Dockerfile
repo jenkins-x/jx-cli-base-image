@@ -28,11 +28,6 @@ RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM}/terraform_${T
   unzip terraform_${TERRAFORM}_linux_amd64.zip && \
   chmod +x terraform && mv terraform /out && rm terraform_${TERRAFORM}_linux_amd64.zip
 
-ENV TERRAGRUNT_VERSION 0.21.2
-RUN curl -f -Lo terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 && \
-  chmod +x terragrunt && \
-  mv terragrunt /out
-  
 FROM golang:1.13
 
 RUN mkdir /out
