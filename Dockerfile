@@ -6,7 +6,7 @@ RUN mkdir /out
 RUN yum install -y unzip
 
 # helmfile
-ENV HELMFILE_VERSION 0.125.2
+ENV HELMFILE_VERSION 0.125.7
 RUN curl -LO https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64 && \
   mv helmfile_linux_amd64 /out/helmfile && \
   chmod +x /out/helmfile
