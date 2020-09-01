@@ -69,6 +69,9 @@ ENV JX_HELM3 "true"
 
 ENV DIFF_VERSION 3.1.1
 
+# kustomize
+RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+
 RUN curl -f -Lo kpt https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kpt && \
   chmod +x kpt && \
   mv kpt /usr/local/bin
