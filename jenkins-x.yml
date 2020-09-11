@@ -28,7 +28,7 @@ pipelineConfig:
 #                command: make build
 #                image: golang:1.13
               - name: build-and-push-image
-                command: /kaniko/executor --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/jenkinsxio/jx-cli-base:$VERSION
+                command: /kaniko/executor --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/jenkinsxio/jx-cli-base:$VERSION --destination=gcr.io/jenkinsxio/jx-cli-base:latest
                 env:
                 - name: NO_GOOGLE_APPLICATION_CREDENTIALS
                   value: "true"
