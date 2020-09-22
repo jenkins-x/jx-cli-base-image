@@ -28,6 +28,12 @@ RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM}/terraform_${T
   unzip terraform_${TERRAFORM}_linux_amd64.zip && \
   chmod +x terraform && mv terraform /out && rm terraform_${TERRAFORM}_linux_amd64.zip
 
+# gh cli - lets use this until we have a jx git plugin that supports other git poviders
+ENV GH_VERSION 1.0.0
+RUN curl -f -L https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_amd64.tar.gz  | tar xzv  && \
+  mv gh_1.0.0_linux_amd64/bin/gh /out/gh  && \
+  chmod +x /out/gh
+
 FROM golang:1.13
 
 RUN mkdir /out
