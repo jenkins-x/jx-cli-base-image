@@ -73,7 +73,7 @@ ENV PATH /usr/local/bin:/usr/local/git/bin:$PATH:/usr/local/gcloud/google-cloud-
 
 ENV JX_HELM3 "true"
 
-ENV DIFF_VERSION 3.1.1
+ENV DIFF_VERSION 3.1.3
 
 # kustomize using latest release
 RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && \
