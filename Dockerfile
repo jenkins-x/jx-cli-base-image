@@ -34,7 +34,7 @@ RUN curl -f -L https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${
   mv gh_${GH_VERSION}_linux_amd64/bin/gh /out/gh  && \
   chmod +x /out/gh
 
-FROM golang:1.13
+FROM golang:1.15
 
 RUN mkdir /out
 RUN mkdir -p /go/src/github.com/jenkins-x
