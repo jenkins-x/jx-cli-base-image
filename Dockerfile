@@ -90,6 +90,7 @@ RUN mkdir -p /home/.jx/plugins/bin/
 #COPY helm-annotate/build/helm-annotate /home/.jx/plugins/bin/helmfile-0.0.11
 
 RUN cp /usr/local/bin/helm /home/.jx/plugins/bin/helm-3.2.1 && \
+    cp /usr/local/bin/helm /home/.jx/plugins/bin/helm-3.3.4 && \
     cp /usr/local/bin/helmfile /home/.jx/plugins/bin/helmfile-0.115.0 && \
     rm /usr/local/bin/helm /usr/local/bin/helmfile && \
     ln -s /home/.jx/plugins/bin/helm-3.2.1 /usr/local/bin/helm && \
