@@ -66,7 +66,7 @@ ENV JX_HOME /home/.jx
 
 # these env vars are used to install helm plugins
 ENV XDG_CACHE_HOME /home/.cache
-#ENV XDG_CONFIG_HOME /home/.config
+ENV XDG_CONFIG_HOME /home/.config
 ENV XDG_DATA_HOME /home/.data
 
 ENV PATH /usr/local/bin:/usr/local/git/bin:$PATH:/usr/local/gcloud/google-cloud-sdk/bin
