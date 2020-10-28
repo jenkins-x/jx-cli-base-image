@@ -17,3 +17,11 @@ jx:
 build:
 	git clone https://github.com/jenkins-x/helm-annotate.git && \
 	cd helm-annotate && make build
+
+release:
+
+goreleaser: 
+
+linux:
+
+test:
