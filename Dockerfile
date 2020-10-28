@@ -6,7 +6,7 @@ RUN mkdir /out
 RUN yum install -y unzip
 
 # helmfile
-ENV HELMFILE_VERSION 0.130.1
+ENV HELMFILE_VERSION 0.132.1
 RUN curl -LO https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64 && \
   mv helmfile_linux_amd64 /out/helmfile && \
   chmod +x /out/helmfile
@@ -18,18 +18,18 @@ RUN curl -LO  https://storage.googleapis.com/kubernetes-release/release/v${KUBEC
   chmod +x /out/kubectl
 
 # helm 3
-ENV HELM3_VERSION 3.3.4
+ENV HELM3_VERSION 3.4.0
 RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar xzv && \
     mv linux-386/helm /out/
 
 # terraform
-ENV TERRAFORM 0.13.4
+ENV TERRAFORM 0.13.5
 RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM}/terraform_${TERRAFORM}_linux_amd64.zip && \
   unzip terraform_${TERRAFORM}_linux_amd64.zip && \
   chmod +x terraform && mv terraform /out && rm terraform_${TERRAFORM}_linux_amd64.zip
 
 # gh cli - lets use this until we have a jx git plugin that supports other git poviders
-ENV GH_VERSION 1.1.0
+ENV GH_VERSION 1.2.0
 RUN curl -f -L https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_amd64.tar.gz  | tar xzv  && \
   mv gh_${GH_VERSION}_linux_amd64/bin/gh /out/gh  && \
   chmod +x /out/gh
