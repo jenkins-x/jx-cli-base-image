@@ -23,7 +23,7 @@ RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar
     mv linux-386/helm /out/
 
 # terraform
-ENV TERRAFORM 0.13.5
+ENV TERRAFORM 0.14.0
 RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM}/terraform_${TERRAFORM}_linux_amd64.zip && \
   unzip terraform_${TERRAFORM}_linux_amd64.zip && \
   chmod +x terraform && mv terraform /out && rm terraform_${TERRAFORM}_linux_amd64.zip
