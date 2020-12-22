@@ -17,6 +17,12 @@ RUN curl -LO  https://storage.googleapis.com/kubernetes-release/release/v${KUBEC
   mv kubectl /out/kubectl && \
   chmod +x /out/kubectl
 
+#  kapp
+ENV KAPP_VERSION 0.35.1-cmfork
+RUN curl -f -L https://github.com/chrismellard/carvel-kapp/releases/download/v${KAPP_VERSION}/carvel-kapp_${KAPP_VERSION}_Linux_x86_64.tar.gz  | tar xzv  && \
+  mv kapp /out/kapp  && \
+  chmod +x /out/kapp
+
 # helm 3
 ENV HELM3_VERSION 3.4.0
 RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar xzv && \
