@@ -86,6 +86,7 @@ RUN curl -f -Lo kpt https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kp
   chmod +x kpt && \
   mv kpt /usr/local/bin
 
+
 ENV YQ_VERSION "4.6.1"
 
 RUN echo using yq version ${YQ_VERSION} and OS ${TARGETOS} arch ${TARGETARCH} && \
