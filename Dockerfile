@@ -53,6 +53,8 @@ ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 # use a multi stage image so we don't include all the build tools above
 FROM google/cloud-sdk:slim
 
+ARG TARGETARCH
+ARG TARGETOS
 
 # need to copy the whole git source else it doesn't clone the helm plugin repos below
 COPY --from=0 /out /usr/local/bin
