@@ -53,8 +53,8 @@ ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 # use a multi stage image so we don't include all the build tools above
 FROM google/cloud-sdk:slim
 
-ARG TARGETARCH
-ARG TARGETOS
+ENV TARGETOS linux
+ENV TARGETARCH amd64
 
 # need to copy the whole git source else it doesn't clone the helm plugin repos below
 COPY --from=0 /out /usr/local/bin
@@ -81,7 +81,7 @@ ENV YQ_VERSION "4.6.1"
 
 RUN echo using yq version ${YQ_VERSION} and OS ${TARGETOS} arch ${TARGETARCH} && \
   curl -L -s https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_${TARGETOS}_${TARGETARCH} > yq && \
-  chmod +x yq && mv yq /usr/local/bin
+  chmod +x yq && mv yq /usr/local/bin && yq --version
   
 # kustomize using latest release
 RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && \
