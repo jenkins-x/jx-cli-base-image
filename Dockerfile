@@ -75,6 +75,12 @@ ENV JX_HELM3 "true"
 
 ENV DIFF_VERSION 3.1.3
 
+ENV YQ_VERSION "4.6.1"
+
+RUN echo using yq version ${YQ_VERSION} and OS ${TARGETOS} arch ${TARGETARCH} && \
+  curl -L -s https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_${TARGETOS}_${TARGETARCH} > yq && \
+  chmod +x yq && mv yq /usr/local/bin
+  
 # kustomize using latest release
 RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && \
   chmod +x kustomize && \
