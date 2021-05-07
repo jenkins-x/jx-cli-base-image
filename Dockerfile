@@ -6,7 +6,7 @@ RUN mkdir /out
 RUN yum install -y unzip
 
 # helmfile
-ENV HELMFILE_VERSION 0.135.0
+ENV HELMFILE_VERSION 0.139.0
 RUN curl -LO https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64 && \
   mv helmfile_linux_amd64 /out/helmfile && \
   chmod +x /out/helmfile
@@ -18,7 +18,7 @@ RUN curl -LO  https://storage.googleapis.com/kubernetes-release/release/v${KUBEC
   chmod +x /out/kubectl
 
 # helm 3
-ENV HELM3_VERSION 3.4.2
+ENV HELM3_VERSION 3.5.4
 RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar xzv && \
     mv linux-386/helm /out/
 
