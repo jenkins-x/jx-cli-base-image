@@ -3,7 +3,7 @@ kind: UpdateConfig
 spec:
   rules:
     - urls:
-        - https://github.com/jenkins-x/jx-cli.git
+        - https://github.com/jenkins-x/jx.git
       changes:
         - regex:
             pattern: |
