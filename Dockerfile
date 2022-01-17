@@ -12,7 +12,7 @@ RUN curl -LO https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VE
   chmod +x /out/helmfile
 
 # kubectl
-ENV KUBECTL_VERSION 1.16.15
+ENV KUBECTL_VERSION 1.22.5
 RUN curl -LO  https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
   mv kubectl /out/kubectl && \
   chmod +x /out/kubectl
