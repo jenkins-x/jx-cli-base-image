@@ -1,5 +1,5 @@
 # this is the build image so don't worry about using stuff...
-FROM centos:7
+FROM centos:7 as first
 
 RUN mkdir /out
 
@@ -23,18 +23,18 @@ RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar
     mv linux-386/helm /out/
 
 # terraform
-ENV TERRAFORM 0.14.3
+ENV TERRAFORM 1.1.9
 RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM}/terraform_${TERRAFORM}_linux_amd64.zip && \
   unzip terraform_${TERRAFORM}_linux_amd64.zip && \
   chmod +x terraform && mv terraform /out && rm terraform_${TERRAFORM}_linux_amd64.zip
 
 # gh cli - lets use this until we have a jx git plugin that supports other git poviders
-ENV GH_VERSION 1.2.0
+ENV GH_VERSION 2.9.0
 RUN curl -f -L https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_amd64.tar.gz  | tar xzv  && \
   mv gh_${GH_VERSION}_linux_amd64/bin/gh /out/gh  && \
   chmod +x /out/gh
 
-FROM golang:1.15
+FROM golang:1.17.9 as second
 
 RUN mkdir /out
 RUN mkdir -p /go/src/github.com/jenkins-x
@@ -57,8 +57,8 @@ ENV TARGETOS linux
 ENV TARGETARCH amd64
 
 # need to copy the whole git source else it doesn't clone the helm plugin repos below
-COPY --from=0 /out /usr/local/bin
-COPY --from=1 /out /usr/local/bin
+COPY --from=first /out /usr/local/bin
+COPY --from=second /out /usr/local/bin
 
 # this is the directory used in pipelines for home dir
 ENV HOME /builder/home

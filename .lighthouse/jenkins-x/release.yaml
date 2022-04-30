@@ -29,7 +29,7 @@ spec:
           resources: {}
         - name: changelog
           resources: {}
-        - image: goreleaser/goreleaser:v0.155.0
+        - image: goreleaser/goreleaser:v1.8.3
           name: upload-binaries
           resources: {}
           script: |
